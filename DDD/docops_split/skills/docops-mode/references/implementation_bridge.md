@@ -12,8 +12,11 @@ Before coding, make these explicit:
 - Acceptance criteria to verify
 - Verification plan
 
+Primary spec docs may live in `spec/**` while the work is still evolving, but authority docs that implementation depends on must be published into the appropriate `docs/**` location before or together with code changes.
+
 ## Mapping rules
 ### If the change is feature-level
+- Working drafts can live in `spec/features/<feature-key>/**` during active iteration.
 - Feature doc carries goal, scope, UX, and acceptance criteria.
 - Dictionary docs carry API/data/UI contracts.
 - Code implements the behavior defined there.
@@ -39,6 +42,7 @@ Before coding, make these explicit:
 ## Closure mapping
 At completion, make sure the final state is reflected in:
 - implementation or code summary
+- promoted or archived `spec/**` workspace notes
 - changed docs
 - verification status
 - relevant `dev_status/**` files

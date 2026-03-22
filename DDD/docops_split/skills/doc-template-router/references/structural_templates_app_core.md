@@ -6,8 +6,16 @@ Use these as fuller drafting skeletons when a structural edit targets app-level 
 **Suggested path:** `docs/apps/<app>/00_readme.md`
 
 ```markdown
+---
+kind: app_readme
+scope: app:<app>
+lifecycle: active
+authority: published_reference
+summary: Entry point and navigation for the <app> app docs.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # App: <app>
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## 1. What Is This App?
 - Target users:
@@ -46,9 +54,16 @@ Use these as fuller drafting skeletons when a structural edit targets app-level 
 **Suggested path:** `docs/apps/<app>/features/<feature>.md`
 
 ```markdown
+---
+kind: feature_spec
+scope: app:<app>
+lifecycle: draft
+authority: published_reference
+summary: Feature specification for <feature>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # Feature: <feature>
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
-> Status: Draft / Active / Stable
 
 ## 1. Goal & Non-Goal
 - Goal:

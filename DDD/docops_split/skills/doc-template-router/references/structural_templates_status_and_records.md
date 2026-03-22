@@ -6,12 +6,26 @@ Use these as fuller drafting skeletons when a structural edit targets dev-status
 **Suggested paths:** `docs/dev_status/active_task.md`, `docs/dev_status/todo.md`, `docs/dev_status/history_log.md`
 
 ```markdown
+---
+kind: dev_status_active_task
+scope: track:<TRACK>
+lifecycle: active
+authority: workflow_record
+summary: Live task state for <TRACK>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+track: <TRACK>
+---
+
 # Active Task Context
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## <TRACK>
 ### Current Objective
 - ...
+
+### Relevant Paths
+- Active spec workspace:
+- Published docs:
+- Key code areas:
 
 ### Current Focus
 - [ ] ...
@@ -22,19 +36,33 @@ Use these as fuller drafting skeletons when a structural edit targets dev-status
 ```
 
 ```markdown
-# Todo / Backlog
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
+---
+kind: dev_status_todo
+scope: track:<TRACK>
+lifecycle: active
+authority: workflow_record
+summary: Backlog items for <TRACK> or related work areas.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+track: <TRACK>
+---
 
-> Newest items first.
+# Todo / Backlog
 
 - [YYYY-MM-DD] **<TRACK> / <AREA>** <short item> - <link or note>
 ```
 
 ```markdown
-# History Log
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
+---
+kind: dev_status_history
+scope: track:<TRACK>
+lifecycle: stable
+authority: workflow_record
+summary: Completed history entries for <TRACK>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+track: <TRACK>
+---
 
-> Newest entries first. Each entry is single-track.
+# History Log
 
 ## [YYYY-MM-DD] **<TRACK>** <objective summary>
 - What shipped or changed:
@@ -47,9 +75,17 @@ Use these as fuller drafting skeletons when a structural edit targets dev-status
 **Suggested path:** `docs/issues/YYYY-MM-DD-<issue_name>.md`
 
 ```markdown
+---
+kind: issue
+scope: app:<app_or_area>
+lifecycle: active
+authority: incident_record
+summary: Incident or bug record for <short issue title>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+severity: P0 / P1 / P2
+---
+
 # Issue: <short issue title>
-> Date: [YYYY-MM-DD] ([TZ])
-> Severity: P0 / P1 / P2
 
 ## Environment
 - version/branch:
@@ -84,10 +120,17 @@ Use these as fuller drafting skeletons when a structural edit targets dev-status
 **Suggested path:** `docs/adr/ADR-<SCOPE>-###-title.md`
 
 ```markdown
+---
+kind: adr
+scope: platform:<area_or_app>
+lifecycle: stable
+authority: decision_record
+summary: Architecture decision record for <title>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+decision_status: draft / accepted / deprecated
+---
+
 # ADR: <title>
-> Date: [YYYY-MM-DD] ([TZ])
-> Status: Draft / Accepted / Deprecated
-> Scope: PLATFORM / <APP>
 
 ## Context
 - What problem is being solved?

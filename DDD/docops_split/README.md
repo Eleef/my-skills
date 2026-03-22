@@ -9,6 +9,8 @@ This folder contains a practical split of the original workflow standard into:
 ## Intended usage
 - Put `rules/DOCOPS_RULES.md` into your persistent project rules layer after review.
 - Keep the two skills as reusable, on-demand workflow components.
+- Prefer `spec/**` as the active workspace for in-flight stage materials; publish stable authority or durable knowledge into `docs/**`.
+- Use YAML front matter plus kind-based body access rules so agents can triage docs before reading full content.
 - Evolve templates and routing in the skill references rather than bloating the rules layer.
 - Use `test_prompts.md` for quick manual trigger checks before moving the skills into your main skills directory.
 - Use `MIGRATION_GUIDE.md` for the move plan and first-test sequence.

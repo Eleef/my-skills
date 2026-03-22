@@ -6,8 +6,16 @@ Use these as fuller drafting skeletons when a structural edit targets project en
 **Suggested path:** `docs/00_project_index.md`
 
 ```markdown
+---
+kind: project_index
+scope: repo
+lifecycle: active
+authority: published_reference
+summary: Repository context map and docs navigation.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # [Project Name] Context Map
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## 1. Project Overview
 - What this repository is for
@@ -56,8 +64,16 @@ Use these as fuller drafting skeletons when a structural edit targets project en
 **Suggested paths:** `docs/platform/<area>/README.md` or `docs/platform/<component>/specs/<topic>.md`
 
 ```markdown
+---
+kind: platform_doc
+scope: platform:<area_or_component>
+lifecycle: draft
+authority: published_reference
+summary: Shared platform guidance or spec for <area_or_component>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # Platform: <area_or_component>
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## 1. Purpose
 - What shared capability this doc covers
@@ -90,9 +106,16 @@ Use these as fuller drafting skeletons when a structural edit targets project en
 **Suggested path:** `docs/platform/standards/<topic>.md`
 
 ```markdown
+---
+kind: platform_standard
+scope: platform:<topic_area>
+lifecycle: draft
+authority: published_reference
+summary: Shared engineering standard for <topic>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # Standard: <topic>
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
-> Status: Draft / Active / Stable
 
 ## 1. Purpose
 - What problem this standard solves

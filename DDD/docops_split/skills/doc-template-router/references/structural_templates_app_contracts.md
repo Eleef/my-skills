@@ -6,8 +6,16 @@ Use these as fuller drafting skeletons when a structural edit targets app-owned 
 **Suggested path:** `docs/apps/<app>/dictionary/api_schema.md`
 
 ```markdown
+---
+kind: dictionary_api_schema
+scope: app:<app>
+lifecycle: stable
+authority: app_contract
+summary: API contract authority for <app>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # <app> API Schema (SSOT)
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## <METHOD> <PATH> - <short name>
 ### Purpose
@@ -47,8 +55,16 @@ Use these as fuller drafting skeletons when a structural edit targets app-owned 
 **Suggested path:** `docs/apps/<app>/dictionary/data_schema.md`
 
 ```markdown
+---
+kind: dictionary_data_schema
+scope: app:<app>
+lifecycle: stable
+authority: app_contract
+summary: Data contract authority for <app>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # <app> Data Schema (SSOT)
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## Table: <table_name>
 ### Purpose
@@ -75,8 +91,16 @@ Use these as fuller drafting skeletons when a structural edit targets app-owned 
 **Suggested path:** `docs/apps/<app>/dictionary/ui_schema.md`
 
 ```markdown
+---
+kind: dictionary_ui_schema
+scope: app:<app>
+lifecycle: stable
+authority: app_contract
+summary: UI contract authority for <app>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
 # <app> UI Schema (SSOT)
-> Last Updated: [YYYY-MM-DD HH:MM] ([TZ])
 
 ## 1. Routes
 | route | page | auth | description |

@@ -1,6 +1,6 @@
 ---
 name: doc-template-router
-description: Route repository documentation tasks to the right editing pattern and template shape. Use this whenever the user wants to create a doc, rewrite or restructure an existing doc, choose between feature/dictionary/standards/dev-status/issue/ADR formats, decide whether an edit is micro or structural, or apply checklist-based documentation quality control instead of freeform writing. Prefer this skill whenever the task is mainly about selecting the correct doc format, standards-vs-ADR-vs-dictionary placement, template family, or edit path before drafting.
+description: Route published repository documentation tasks to the right editing pattern and template shape. Use this whenever the user wants to create a doc, rewrite or restructure an existing doc, choose between feature/dictionary/standards/dev-status/issue/ADR formats, decide whether an edit is micro or structural, or apply checklist-based documentation quality control instead of freeform writing. Prefer this skill whenever the task is mainly about selecting the correct published doc format, standards-vs-ADR-vs-dictionary placement, template family, or edit path before drafting.
 ---
 
 # Doc Template Router
@@ -16,7 +16,13 @@ This skill is the template-routing layer. It should stay separate from always-on
 
 ## Decision flow
 
-### 1. Determine edit size
+### 1. Inspect metadata first
+If the target doc already exists and is a managed markdown file:
+- read YAML front matter before reading body content
+- use `kind`, `scope`, `lifecycle`, `authority`, and `summary` to confirm the route
+- if front matter is missing, treat it as metadata debt and infer the route carefully from path plus headings
+
+### 2. Determine edit size
 Treat the request as a **micro-edit** if any of these are true:
 - only one small section changes
 - total change is roughly within 30 lines
@@ -39,7 +45,7 @@ For structural edits:
 - choose one template family only
 - do not mix multiple top-level template structures unless the user explicitly asks
 
-### 2. Route to a template family
+### 3. Route to a template family
 Use this mapping:
 - Project entry / navigation → `PROJECT_INDEX`
 - Platform shared docs or platform-owned specs → `PLATFORM_*`
@@ -53,13 +59,13 @@ Use this mapping:
 - Bug report / incident review → `ISSUE`
 - Architecture decision → `ADR_*`
 
-### 3. Keep SSOT boundaries clean
+### 4. Keep SSOT boundaries clean
 - App dictionary docs are authoritative for app-scoped schema and contracts.
 - Platform-owned shared contracts may live in `docs/platform/<component>/specs/**`.
 - Feature docs should link to authority docs instead of copying full tables.
 - Ops docs should describe operation and deployment behavior, not duplicate schemas.
 
-### 4. Apply the right checklist
+### 5. Apply the right checklist
 For the common micro-edit cases below, use exactly one relevant checklist family:
 - `FEATURE`
 - `DICTIONARY`
@@ -78,7 +84,7 @@ Checklist intent:
 - no duplicate schema drift
 - verification and rollback included when behavior changes
 
-### 5. Output format
+### 6. Output format
 When routing a request, report briefly:
 1. Edit type: micro or structural
 2. Chosen template family or checklist family
@@ -90,6 +96,7 @@ When routing a request, report briefly:
 Read only what you need:
 - `references/routing_table.md` for the route map
 - `references/checklists.md` for micro-edit quality checks
+- `../docops-mode/references/document_metadata_and_access.md` for the front matter standard and kind-based body access rules
 - `references/template_notes.md` for minimal structural template guidance
 - `references/structural_templates_platform.md` for `PROJECT_INDEX`, `PLATFORM_*`, and `PLATFORM_STANDARDS`
 - `references/structural_templates_app_core.md` for `APP_README` and `FEATURE_SPEC`
@@ -100,6 +107,7 @@ Read only what you need:
 - Prefer the smallest compliant structure.
 - Do not force a full template when a checklist-based patch is enough.
 - If the user asks for a draft but the source material is incomplete, create a draft with explicit assumptions instead of fake details.
+- If the request is still an in-flight stage draft rather than a published docs artifact, hand back to `docops-mode` and keep the evolving material in `spec/**` until it is ready to publish.
 - If the task is really about repository-wide workflow, dev-status coordination, or multi-step DocOps execution, hand back to `docops-mode` instead of absorbing the whole process.
 
 ## Example trigger scenarios

@@ -2,6 +2,17 @@
 
 Use one template family per structural edit. Keep the structure minimal and avoid loading or reproducing every template body unless the task truly needs it.
 
+## Managed metadata
+All managed markdown docs should start with the minimal YAML front matter:
+- `kind`
+- `scope`
+- `lifecycle`
+- `authority`
+- `summary`
+- `updated_at`
+
+Use front matter for routing and quick triage before reading the body.
+
 ## PROJECT_INDEX
 Use for the global docs entry point and navigation map.
 Include:

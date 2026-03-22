@@ -1,5 +1,7 @@
 # Routing Table
 
+If an existing managed doc already has YAML front matter, use its `kind` as the primary routing signal before relying on path or heading heuristics.
+
 ## Template family map
 - Project global entry or navigation changes → `PROJECT_INDEX`
 - Shared platform docs or platform-owned specs → `PLATFORM_*`
