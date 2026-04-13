@@ -1,6 +1,6 @@
 ---
 name: doc-template-router
-description: Route published repository documentation tasks to the right editing pattern and template shape. Use this whenever the user wants to create a doc, rewrite or restructure an existing doc, choose between feature/dictionary/standards/dev-status/issue/ADR formats, decide whether an edit is micro or structural, or apply checklist-based documentation quality control instead of freeform writing. Prefer this skill whenever the task is mainly about selecting the correct published doc format, standards-vs-ADR-vs-dictionary placement, template family, or edit path before drafting.
+description: Route published repository documentation tasks to the right editing pattern and template shape. Use this whenever the user wants to create a doc, rewrite or restructure an existing published doc, choose between feature/app-contract/platform-contract/standards/dev-status/issue/ADR formats, decide whether an edit is micro or structural, or apply checklist-based documentation quality control instead of freeform writing. Prefer this skill whenever the task is mainly about selecting the correct published doc format, platform-contract-vs-standard-vs-ADR-vs-dictionary placement, template family, or edit path before drafting. Do not use this as a substitute for repo-wide DocOps workflow or `dev_status` coordination across a larger task.
 ---
 
 # Doc Template Router
@@ -23,32 +23,38 @@ If the target doc already exists and is a managed markdown file:
 - if front matter is missing, treat it as metadata debt and infer the route carefully from path plus headings
 
 ### 2. Determine edit size
-Treat the request as a **micro-edit** if any of these are true:
+Classify in this order.
+
+Treat the request as a **structural edit** first if any of these are true:
+- a new document is being created
+- multiple sections are added or reorganized
+- several sources are being merged into a new structure
+- dictionary or contract content needs broad rework
+
+For structural edits:
+- choose one template family only
+- do not mix multiple top-level template structures unless the user explicitly asks
+
+If no structural condition matched, treat the request as a **micro-edit** only when all of these are true:
 - only one small section changes
 - total change is roughly within 30 lines
-- no new document is created
+- the existing document remains in place
 - no major section reordering is needed
-- no systematic dictionary/schema redesign is involved
+- no systematic dictionary or contract redesign is involved
+- the template family does not change
 
 For micro-edits:
 - do not load full template bodies
 - use the appropriate checklist only
 - preserve the existing structure
 
-Treat the request as a **structural edit** if any of these are true:
-- a new document is being created
-- multiple sections are added or reorganized
-- several sources are being merged into a new structure
-- dictionary content needs broad rework
-
-For structural edits:
-- choose one template family only
-- do not mix multiple top-level template structures unless the user explicitly asks
-
 ### 3. Route to a template family
 Use this mapping:
 - Project entry / navigation → `PROJECT_INDEX`
-- Platform shared docs or platform-owned specs → `PLATFORM_*`
+- Platform shared guidance or overview → `PLATFORM_DOC`
+- Platform-owned API contract → `PLATFORM_API_SCHEMA`
+- Platform-owned data / DB contract → `PLATFORM_DATA_SCHEMA`
+- Platform-owned UI / route / event contract → `PLATFORM_UI_SCHEMA`
 - Platform reusable standards / conventions / policies → `PLATFORM_STANDARDS`
 - App overview → `APP_README`
 - Feature story / acceptance / flow → `FEATURE_SPEC`
@@ -72,7 +78,7 @@ For the common micro-edit cases below, use exactly one relevant checklist family
 - `ISSUE`
 - `DEV_STATUS`
 
-For other small doc types such as project index, app overview, platform docs, or ADRs:
+For other small doc types such as project index, app overview, platform guidance docs, platform contract docs, or ADRs:
 - preserve the existing structure
 - use `references/template_notes.md` for section expectations
 - do not load a fuller skeleton unless the edit becomes structural
@@ -98,7 +104,7 @@ Read only what you need:
 - `references/checklists.md` for micro-edit quality checks
 - `../docops-mode/references/document_metadata_and_access.md` for the front matter standard and kind-based body access rules
 - `references/template_notes.md` for minimal structural template guidance
-- `references/structural_templates_platform.md` for `PROJECT_INDEX`, `PLATFORM_*`, and `PLATFORM_STANDARDS`
+- `references/structural_templates_platform.md` for `PROJECT_INDEX`, `PLATFORM_DOC`, `PLATFORM_*_SCHEMA`, and `PLATFORM_STANDARDS`
 - `references/structural_templates_app_core.md` for `APP_README` and `FEATURE_SPEC`
 - `references/structural_templates_app_contracts.md` for `DICTIONARY_*`
 - `references/structural_templates_status_and_records.md` for `DEV_STATUS_*`, `ISSUE`, and `ADR_*`

@@ -1,6 +1,6 @@
 ---
 name: docops-mode
-description: Enter a structured DocOps workflow for repository-related documentation, architecture, debugging, and implementation-tracking tasks. Use this whenever the user asks to plan, audit, reorganize, or update project docs; keep `docs/dev_status/**` in sync; clarify documentation scope; use `spec/**` as the active workspace for in-flight stage material; separate app docs from platform docs; move from clarified requirement/spec into implementation planning; run a documentation bootstrap; or follow a multi-step repo documentation process instead of giving a one-off answer. Prefer this skill for non-trivial doc work, doc-driven debugging, architecture-note updates, spec-to-implementation bridging, and tasks that require state, handoff, or verification discipline.
+description: Coordinate multi-step DocOps workflow for repository-related documentation, architecture, debugging, and implementation-tracking tasks. Use this when the work spans planning, active `spec/**` workspace management, `docs/dev_status/**` sync, state or handoff updates, repo-wide documentation reorganization, or explicit spec-to-implementation bridging. Prefer this skill for non-trivial doc work, doc-driven debugging, architecture-note coordination, and tasks that require workflow state or verification discipline. Do not use this for isolated template choice, simple published-doc routing, or micro-vs-structural edit classification; use `doc-template-router` for those.
 ---
 
 # DocOps Mode
@@ -86,7 +86,7 @@ Before answers arrive, you may give a draft only if assumptions are marked.
 
 ### 8. Enforce SSOT behavior
 - App dictionary files are the contract authority for app-scoped behavior.
-- Platform-owned shared contracts may live in `docs/platform/<component>/specs/**`.
+- Platform-owned shared API, data, UI, or similar contracts may live in `docs/platform/<component>/specs/**`.
 - Feature docs tell the story and link to the relevant authority docs instead of restating them.
 - Do not maintain duplicate schemas in feature or ops docs.
 - If the task changes behavior, update both implementation and affected docs together.
@@ -97,7 +97,7 @@ If the task requires template routing, structural doc generation, or checklist-d
 Use it especially when:
 - creating a new document
 - heavily restructuring an existing doc
-- choosing among feature / dictionary / standards / dev_status / issue / ADR formats
+- choosing among feature / app contract / platform contract / standards / dev_status / issue / ADR formats
 - deciding micro-edit vs structural-edit flow
 
 ### 10. Bridge spec to implementation explicitly

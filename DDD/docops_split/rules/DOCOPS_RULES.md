@@ -18,7 +18,9 @@
 - They are independent: one task should have one main working state, while a response may include multiple verification labels.
 
 ## Track tagging for dev status
-- Any update involving `docs/dev_status/**` must specify a track.
+- Any update involving `docs/dev_status/**` must specify a track in the edited block, entry, or handoff note.
+- Shared `docs/dev_status/**` files may carry multiple tracks at once; keep track identity in section headings or log entries instead of forcing a single file-level track in front matter.
+- If the repository intentionally uses one file per track, file-level `scope: track:<TRACK>` is still valid.
 - If the user did not specify one, ask first.
 - If a temporary assumption is required, use `PLATFORM-GENERAL` and label it as an assumption.
 
@@ -46,7 +48,7 @@
 
 ## SSOT and atomic updates
 - App-scoped fields, contracts, schema, table structures, and API behavior are authoritative only in `docs/apps/<app>/dictionary/**`.
-- Platform-shared contracts or specs may be authoritative in `docs/platform/<component>/specs/**` when the owner is a reusable platform component or service.
+- Platform-shared API, data, UI, or other reusable contracts may be authoritative in `docs/platform/<component>/specs/**` when the owner is a reusable platform component or service.
 - `features/**` may reference authority docs but must not maintain a second schema copy.
 - If code changes affect API, data, workflow, or deployment behavior, update the corresponding docs in the same task.
 

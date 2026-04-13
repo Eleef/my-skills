@@ -1,6 +1,6 @@
 # Structural Templates: Platform and Index
 
-Use these as fuller drafting skeletons when a structural edit targets project entry docs or shared platform docs. Pick one family only.
+Use these as fuller drafting skeletons when a structural edit targets project entry docs, shared platform docs, or platform-owned contract docs. Pick one family only.
 
 ## PROJECT_INDEX
 **Suggested path:** `docs/00_project_index.md`
@@ -60,8 +60,8 @@ updated_at: "YYYY-MM-DD HH:MM (TZ)"
 - Live iteration context:
 ```
 
-## PLATFORM_*
-**Suggested paths:** `docs/platform/<area>/README.md` or `docs/platform/<component>/specs/<topic>.md`
+## PLATFORM_DOC
+**Suggested paths:** `docs/platform/<area>/README.md` or `docs/platform/<area>/<topic>.md`
 
 ```markdown
 ---
@@ -69,7 +69,7 @@ kind: platform_doc
 scope: platform:<area_or_component>
 lifecycle: draft
 authority: published_reference
-summary: Shared platform guidance or spec for <area_or_component>.
+summary: Shared platform guidance or overview for <area_or_component>.
 updated_at: "YYYY-MM-DD HH:MM (TZ)"
 ---
 
@@ -89,8 +89,8 @@ updated_at: "YYYY-MM-DD HH:MM (TZ)"
 - Constraints or assumptions:
 
 ## 4. Rules or Contract
-- If this is guidance: the shared rules
-- If this is a spec: the authoritative contract and stable headings
+- Shared rules, architecture notes, or reusable operating guidance
+- Stable terminology and links to any contract docs that this guidance depends on
 
 ## 5. Operations and Verification
 - How to use or verify it
@@ -100,6 +100,128 @@ updated_at: "YYYY-MM-DD HH:MM (TZ)"
 - Related standards:
 - Related ADRs:
 - Related app docs:
+```
+
+## PLATFORM_API_SCHEMA
+**Suggested path:** `docs/platform/<component>/specs/api_schema.md`
+
+```markdown
+---
+kind: platform_api_schema
+scope: platform:<component>
+lifecycle: stable
+authority: platform_contract
+summary: Platform API contract authority for <component>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
+# Platform API Schema: <component>
+
+## <METHOD> <PATH> - <short name>
+### Purpose
+- ...
+
+### Auth
+- Required:
+- Roles/Scopes:
+
+### Request
+#### Query
+| name | type | required | description |
+|---|---|---:|---|
+
+#### Body
+| field | type | required | description |
+|---|---|---:|---|
+
+### Response
+#### 200
+| field | type | description |
+|---|---|---|
+
+### Errors
+- 400:
+- 401:
+- 403:
+- 500:
+
+### Notes
+- Consumers:
+- Versioning:
+- Backward compatibility:
+```
+
+## PLATFORM_DATA_SCHEMA
+**Suggested path:** `docs/platform/<component>/specs/data_schema.md`
+
+```markdown
+---
+kind: platform_data_schema
+scope: platform:<component>
+lifecycle: stable
+authority: platform_contract
+summary: Platform data contract authority for <component>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
+# Platform Data Schema: <component>
+
+## Entity: <entity_name>
+### Purpose
+- ...
+
+### Fields
+| field | type | nullable | description |
+|---|---|---:|---|
+
+### Constraints
+- Unique:
+- FK:
+- Check:
+
+### Indexes
+- ...
+
+### Notes
+- Upstream producers:
+- Downstream consumers:
+- Migration or rollback notes:
+```
+
+## PLATFORM_UI_SCHEMA
+**Suggested path:** `docs/platform/<component>/specs/ui_schema.md`
+
+```markdown
+---
+kind: platform_ui_schema
+scope: platform:<component>
+lifecycle: stable
+authority: platform_contract
+summary: Platform UI or interaction contract authority for <component>.
+updated_at: "YYYY-MM-DD HH:MM (TZ)"
+---
+
+# Platform UI Schema: <component>
+
+## 1. Routes or Surfaces
+| surface | auth | description |
+|---|---|---|
+
+## 2. States
+- <surface_or_flow>: Idle -> Loading -> Loaded -> Error
+
+## 3. Events
+| event | trigger | payload |
+|---|---|---|
+
+## 4. Error Mapping
+| source_error | ui_message | action |
+|---|---|---|
+
+## 5. Notes
+- Consuming apps:
+- Stability expectations:
+- Related platform docs:
 ```
 
 ## PLATFORM_STANDARDS

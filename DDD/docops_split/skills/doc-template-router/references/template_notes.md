@@ -21,11 +21,22 @@ Include:
 - documentation navigation
 - where to place new docs
 
-## PLATFORM_*
-Use for shared frontend/backend/ops documentation and platform-owned specs.
+## PLATFORM_DOC
+Use for shared frontend/backend/ops documentation and platform guidance that is not itself a stable contract table.
 Keep platform docs generic and reusable across apps.
-Use `docs/platform/<component>/specs/**` when the document is the authority for a reusable platform contract or schema.
 Do not absorb app-specific details.
+
+## PLATFORM_API_SCHEMA
+Use for platform-owned API contracts under `docs/platform/<component>/specs/**`.
+Keep endpoint headings stable and make request/response/errors explicit.
+
+## PLATFORM_DATA_SCHEMA
+Use for platform-owned data and entity contracts under `docs/platform/<component>/specs/**`.
+Keep table or entity headings stable and document constraints and migration notes when relevant.
+
+## PLATFORM_UI_SCHEMA
+Use for platform-owned UI, route, state, or event contracts under `docs/platform/<component>/specs/**`.
+Keep reusable platform behavior separate from app-local adaptations.
 
 ## PLATFORM_STANDARDS
 Use for reusable engineering rules, conventions, checklists, or policies that should apply across apps.
@@ -69,6 +80,7 @@ Use for UI contract docs such as routes, state machines, tracking events, and er
 ## DEV_STATUS_*
 Use for active task, todo, and history log updates.
 Prefer tiny edits and preserve ordering/track isolation.
+Shared `docs/dev_status/**` files usually keep track identity in section headings or entry prefixes rather than file-level front matter.
 
 ## ISSUE
 Use for bug reports and incident write-ups.

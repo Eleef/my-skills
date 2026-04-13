@@ -2,18 +2,19 @@
 
 Use these as fuller drafting skeletons when a structural edit targets dev-status docs or durable decision/incident records. Pick one family only.
 
+Shared `docs/dev_status/**` files are usually multi-track surfaces. Keep track identity in section headings or entry prefixes unless the repository intentionally uses one file per track.
+
 ## DEV_STATUS_*
 **Suggested paths:** `docs/dev_status/active_task.md`, `docs/dev_status/todo.md`, `docs/dev_status/history_log.md`
 
 ```markdown
 ---
 kind: dev_status_active_task
-scope: track:<TRACK>
+scope: repo
 lifecycle: active
 authority: workflow_record
-summary: Live task state for <TRACK>.
+summary: Live task state across active tracks.
 updated_at: "YYYY-MM-DD HH:MM (TZ)"
-track: <TRACK>
 ---
 
 # Active Task Context
@@ -38,12 +39,11 @@ track: <TRACK>
 ```markdown
 ---
 kind: dev_status_todo
-scope: track:<TRACK>
+scope: repo
 lifecycle: active
 authority: workflow_record
-summary: Backlog items for <TRACK> or related work areas.
+summary: Backlog items across active tracks or work areas.
 updated_at: "YYYY-MM-DD HH:MM (TZ)"
-track: <TRACK>
 ---
 
 # Todo / Backlog
@@ -54,12 +54,11 @@ track: <TRACK>
 ```markdown
 ---
 kind: dev_status_history
-scope: track:<TRACK>
+scope: repo
 lifecycle: stable
 authority: workflow_record
-summary: Completed history entries for <TRACK>.
+summary: Completed history entries across tracked work.
 updated_at: "YYYY-MM-DD HH:MM (TZ)"
-track: <TRACK>
 ---
 
 # History Log

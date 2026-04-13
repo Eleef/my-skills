@@ -26,6 +26,11 @@ updated_at: "YYYY-MM-DD HH:MM (TZ)"
 - `summary`: one short sentence for quick triage
 - `updated_at`: last meaningful content change in the repository timestamp format
 
+### Track scope for shared `dev_status` files
+- Shared files such as `docs/dev_status/active_task.md`, `docs/dev_status/todo.md`, and `docs/dev_status/history_log.md` are usually multi-track documents.
+- For shared files, use a shared file scope such as `repo` and keep track identity in section headings, checklist items, or history entry titles.
+- Use file-level `scope: track:<TRACK>` and an optional `track` key only when the repository intentionally stores one file per track.
+
 ## 2. Read protocol
 For managed docs, use this default read order:
 1. Read YAML front matter
@@ -79,6 +84,24 @@ If front matter is missing:
 - Write: patch by section
 - Notes: keep app-specific detail out
 
+### `platform_api_schema`
+- Typical path: `docs/platform/<component>/specs/api_schema.md`
+- Read: front matter, then only the relevant endpoint anchor
+- Write: patch by stable endpoint heading
+- Notes: preserve stable heading format and downstream app references
+
+### `platform_data_schema`
+- Typical path: `docs/platform/<component>/specs/data_schema.md`
+- Read: front matter, then only the relevant table or entity anchor
+- Write: patch by stable table or entity heading
+- Notes: preserve stable heading format and cross-app constraints
+
+### `platform_ui_schema`
+- Typical path: `docs/platform/<component>/specs/ui_schema.md`
+- Read: front matter, then only the relevant route/state/event/error section
+- Write: patch by stable section heading
+- Notes: keep reusable platform behavior separate from app-local UI detail
+
 ### `platform_standard`
 - Read: front matter, purpose, rule set, verification section
 - Write: patch by heading
@@ -112,17 +135,17 @@ If front matter is missing:
 ### `dev_status_active_task`
 - Read: front matter, then current track block first
 - Write: patch the current track block only
-- Notes: do not rewrite unrelated tracks; keep large draft content out of this file
+- Notes: shared files are usually multi-track, so track identity lives in the heading block; do not rewrite unrelated tracks; keep large draft content out of this file
 
 ### `dev_status_todo`
 - Read: front matter plus the first 30-60 body lines by default
 - Write: prepend new items at the top
-- Notes: newest first
+- Notes: newest first; in shared files, keep track labels on each entry instead of in file-level front matter
 
 ### `dev_status_history`
 - Read: front matter plus the first 40-80 body lines by default
 - Write: prepend new single-track entries at the top
-- Notes: newest first; usually no need to read deep history unless explicitly requested
+- Notes: newest first; in shared files, keep track labels in each entry heading; usually no need to read deep history unless explicitly requested
 
 ### `issue`
 - Read: front matter, symptom/root-cause/resolution summary, latest verification
@@ -140,3 +163,4 @@ If front matter is missing:
 - Update front matter fields when the body meaning changes, especially `summary`, `lifecycle`, and `updated_at`.
 - For ordered logs such as todo/history, preserve newest-first ordering.
 - For authority docs, update only the affected anchors unless the task is explicitly structural.
+- For shared `dev_status` files, keep track identity at the section or entry level unless the repository explicitly uses one-file-per-track.
