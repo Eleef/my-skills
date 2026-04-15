@@ -1,6 +1,7 @@
-# Structural Template Notes
-
-Use one template family per structural edit. Keep the structure minimal and avoid loading or reproducing every template body unless the task truly needs it.
+---
+name: structural-template-notes
+description: Shared notes for applying one template family at a time while preserving minimal managed metadata.
+---
 
 ## Managed metadata
 All managed markdown docs should start with the minimal YAML front matter:

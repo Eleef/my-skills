@@ -1,6 +1,7 @@
-# Spec-to-Implementation Bridge
-
-Use this note when a task is moving from clarified requirement into actual implementation.
+---
+name: implementation-bridge
+description: Bridge rules for translating approved specs and authority docs into implementation work.
+---
 
 ## Implementation entry checklist
 Before coding, make these explicit:

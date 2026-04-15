@@ -1,4 +1,7 @@
-# DocOps Bootstrap and States
+---
+name: bootstrap-and-states
+description: Bootstrap sequence and state model for running the core DocOps workflow.
+---
 
 ## Compact bootstrap order
 1. `docs/00_project_index.md`

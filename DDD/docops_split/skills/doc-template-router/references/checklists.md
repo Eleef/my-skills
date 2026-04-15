@@ -1,4 +1,7 @@
-# Micro-edit Checklists
+---
+name: micro-edit-checklists
+description: Checklist set for validating small compliant edits across supported document families.
+---
 
 ## FEATURE
 - Ensure required YAML front matter is present and update `summary`, `lifecycle`, and `updated_at` when meaning changes.

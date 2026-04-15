@@ -1,6 +1,9 @@
-# Structural Templates: Status and Records
+---
+name: structural-templates-status-and-records
+description: Structural drafting skeletons for dev-status surfaces and durable decision or incident records.
+---
 
-Use these as fuller drafting skeletons when a structural edit targets dev-status docs or durable decision/incident records. Pick one family only.
+Pick one family only.
 
 Shared `docs/dev_status/**` files are usually multi-track surfaces. Keep track identity in section headings or entry prefixes unless the repository intentionally uses one file per track.
 

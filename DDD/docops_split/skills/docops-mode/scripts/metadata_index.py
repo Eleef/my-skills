@@ -19,7 +19,16 @@ MAX_FRONT_MATTER_LINES = 80
 MAX_FILES_DEFAULT = 200
 MAX_VALUE_LENGTH = 280
 ALLOWED_SUFFIXES = {".md", ".markdown"}
-DEFAULT_KEYS = ["kind", "scope", "lifecycle", "authority", "summary", "updated_at"]
+DEFAULT_KEYS = [
+    "name",
+    "description",
+    "kind",
+    "scope",
+    "lifecycle",
+    "authority",
+    "summary",
+    "updated_at",
+]
 
 
 def clip(value: str, limit: int = MAX_VALUE_LENGTH) -> str:

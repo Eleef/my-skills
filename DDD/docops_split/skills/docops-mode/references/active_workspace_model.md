@@ -1,6 +1,7 @@
-# Active Workspace and Publishing Model
-
-Use this note when you need to keep active work separate from the published docs surface.
+---
+name: active-workspace-model
+description: Working model for keeping active stage material in spec and durable knowledge in docs.
+---
 
 ## Default split
 - `spec/**` is the preferred active workspace for in-flight stage material.

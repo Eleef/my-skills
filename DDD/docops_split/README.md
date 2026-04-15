@@ -30,6 +30,7 @@
 - 默认把 `spec/**` 当作阶段中的活跃工作区，把稳定的 authority 或长期知识发布到 `docs/**`。
 - 使用 YAML Front Matter 和按 `kind` 的正文读写规则，让 agent 在读正文前先完成 triage。
 - 仓库文档很多时，可选用 `skills/docops-mode/scripts/metadata_index.py` 先批量读取受限 front matter，再决定是否展开正文读取。
+- `skills/**/references/**` 也可以用轻量 front matter 管理，通常只保留 `name` 和 `description`。
 - 模板、路由、checklist 的演进尽量放在 skill references 中，不要继续把规则层写胖。
 - 迁移前先用 `test_prompts.md` 做手工触发测试。
 - 迁移步骤和首轮测试顺序见 `MIGRATION_GUIDE.md`。

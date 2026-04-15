@@ -1,6 +1,7 @@
-# Document Metadata and Access Rules
-
-Use this note to keep document routing and reads/writes small as the repository grows.
+---
+name: document-metadata-and-access
+description: Metadata-first rules for keeping document routing and reads or writes bounded as the repository grows.
+---
 
 ## 1. Required front matter for managed markdown
 Managed markdown under `docs/**` and `spec/**` should start with YAML front matter unless the file is generated, exported, or an explicitly temporary scratch note.
@@ -31,6 +32,24 @@ updated_at: "YYYY-MM-DD HH:MM (TZ)"
 - For shared files, use a shared file scope such as `repo` and keep track identity in section headings, checklist items, or history entry titles.
 - Use file-level `scope: track:<TRACK>` and an optional `track` key only when the repository intentionally stores one file per track.
 
+## 1.5 Lightweight front matter for skill references
+Files under `skills/**/references/**` may also start with YAML front matter so they can follow the same metadata-first triage pattern.
+
+Minimum keys:
+
+```yaml
+---
+name: handoff-and-delivery
+description: Low-frequency boundary guidance for pause, completion, and delivery handling.
+---
+```
+
+Guidelines:
+- keep reference metadata to `name` and `description` only
+- prefer short stable names that are easy to scan in batch output
+- keep `description` to one sentence focused on what the note is for
+- do not copy the full managed-doc schema into skill references unless a real routing need appears
+
 ## 2. Read protocol
 For managed docs, use this default read order:
 1. Read YAML front matter
@@ -41,6 +60,7 @@ For managed docs, use this default read order:
 Optional helper for larger doc trees:
 - Use `skills/docops-mode/scripts/metadata_index.py` when you need a bounded batch scan of front matter before deciding which files to open deeply.
 - Treat the helper as a triage accelerator, not as a replacement for reading the relevant target body sections before editing.
+- For `skills/**/references/**`, `name` and `description` are usually enough for batch triage.
 
 ### Progressive loading must be operational
 - Prompt wording alone does not prove that staged loading happened.

@@ -1,6 +1,7 @@
-# Usage Patterns
-
-Load this note only when you need lower-frequency writing guidance or concrete trigger examples while using `doc-template-router`.
+---
+name: router-usage-patterns
+description: Low-frequency writing guidance and trigger examples for doc-template-router.
+---
 
 ## Writing guidance
 - Prefer the smallest compliant structure.

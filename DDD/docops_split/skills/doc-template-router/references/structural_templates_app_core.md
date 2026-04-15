@@ -1,6 +1,9 @@
-# Structural Templates: App Overview and Features
+---
+name: structural-templates-app-core
+description: Structural drafting skeletons for app overview and feature-oriented documents.
+---
 
-Use these as fuller drafting skeletons when a structural edit targets app-level overview or feature story docs. Pick one family only.
+Pick one family only.
 
 ## APP_README
 **Suggested path:** `docs/apps/<app>/00_readme.md`

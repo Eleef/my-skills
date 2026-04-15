@@ -1,6 +1,9 @@
-# Structural Templates: App Contracts
+---
+name: structural-templates-app-contracts
+description: Structural drafting skeletons for app-owned contract authority documents.
+---
 
-Use these as fuller drafting skeletons when a structural edit targets app-owned contract authority docs. Pick one family only.
+Pick one family only.
 
 ## DICTIONARY_API_SCHEMA
 **Suggested path:** `docs/apps/<app>/dictionary/api_schema.md`

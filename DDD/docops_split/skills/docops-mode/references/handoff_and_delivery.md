@@ -1,6 +1,7 @@
-# Handoff and Delivery
-
-Load this note only when the task reaches a boundary action that is less frequent than the core DocOps loop.
+---
+name: handoff-and-delivery
+description: Low-frequency boundary guidance for pause, completion, and structured delivery handling.
+---
 
 ## 1. Park ideas that are not ready to implement
 If the user says "not now", "later", or shares a rough idea without wanting execution yet:

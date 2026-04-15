@@ -1,6 +1,9 @@
-# Structural Templates: Platform and Index
+---
+name: structural-templates-platform
+description: Structural drafting skeletons for project index, shared platform docs, and platform-owned contracts.
+---
 
-Use these as fuller drafting skeletons when a structural edit targets project entry docs, shared platform docs, or platform-owned contract docs. Pick one family only.
+Pick one family only.
 
 ## PROJECT_INDEX
 **Suggested path:** `docs/00_project_index.md`

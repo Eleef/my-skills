@@ -1,6 +1,7 @@
-# Usage Patterns
-
-Load this note only when you need lower-frequency heuristics or concrete trigger examples while using `docops-mode`.
+---
+name: docops-usage-patterns
+description: Low-frequency heuristics and trigger examples for deciding when to use docops-mode.
+---
 
 ## Practical heuristics
 - Prefer the minimum doc surface needed for the task.
