@@ -12,6 +12,12 @@
 - Keep types, optionality, defaults, and errors aligned with implementation.
 - If there is a breaking change, mention affected areas and downstream docs to sync.
 
+## PLATFORM_CONTRACT
+- Ensure required YAML front matter is present and update `summary`, `lifecycle`, and `updated_at` when meaning changes.
+- Preserve stable endpoint, entity, route, state, and event anchors used by downstream apps or platform docs.
+- Keep compatibility notes, ownership boundaries, and downstream references accurate for the affected contract surface.
+- If there is a breaking or cross-app change, mention consumers, rollout constraints, and which related docs must be synced atomically.
+
 ## ISSUE
 - Ensure required YAML front matter is present and update `summary`, `lifecycle`, and `updated_at` when meaning changes.
 - Keep symptom, impact, repro, expected vs actual, root cause, fix, verification, and rollback present.

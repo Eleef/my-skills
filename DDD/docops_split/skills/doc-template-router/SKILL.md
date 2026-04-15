@@ -75,6 +75,7 @@ Use this mapping:
 For the common micro-edit cases below, use exactly one relevant checklist family:
 - `FEATURE`
 - `DICTIONARY`
+- `PLATFORM_CONTRACT`
 - `ISSUE`
 - `DEV_STATUS`
 
@@ -98,6 +99,8 @@ When routing a request, report briefly:
 4. Any missing inputs
 5. The doc path(s) most likely affected
 
+For lower-frequency writing and example guidance, load the relevant reference file only when needed.
+
 ## Reference files
 Read only what you need:
 - `references/routing_table.md` for the route map
@@ -108,17 +111,8 @@ Read only what you need:
 - `references/structural_templates_app_core.md` for `APP_README` and `FEATURE_SPEC`
 - `references/structural_templates_app_contracts.md` for `DICTIONARY_*`
 - `references/structural_templates_status_and_records.md` for `DEV_STATUS_*`, `ISSUE`, and `ADR_*`
+- `references/usage_patterns.md` for writing guidance and example trigger scenarios
 
-## Writing guidance
-- Prefer the smallest compliant structure.
-- Do not force a full template when a checklist-based patch is enough.
-- If the user asks for a draft but the source material is incomplete, create a draft with explicit assumptions instead of fake details.
-- If the request is still an in-flight stage draft rather than a published docs artifact, hand back to `docops-mode` and keep the evolving material in `spec/**` until it is ready to publish.
-- If the task is really about repository-wide workflow, dev-status coordination, or multi-step DocOps execution, hand back to `docops-mode` instead of absorbing the whole process.
-
-## Example trigger scenarios
-- "我要新建一个 feature 文档，你先帮我判断该走哪个模板。"
-- "这个 API schema 文档要重构，帮我判断是微调还是结构性改写。"
-- "我要补一个 issue 复盘，但不想自由发挥，你按模板路由来。"
-- "先别写内容，先告诉我这次 dev_status 更新该用哪种结构。"
-- "这个规则以后多个 app 都要复用，你判断该写 standards、ADR 还是 dictionary。"
+Default behavior:
+- prefer the smallest compliant structure
+- hand back to `docops-mode` when the request becomes repo-wide workflow, active-stage drafting, or broader dev-status coordination

@@ -12,6 +12,7 @@ Use this skill for heavier repository documentation work. This skill is the work
 - Runs a compact bootstrap over relevant project docs.
 - Uses an active `spec/**` workspace when the material is still evolving.
 - Reads managed doc metadata before expanding into full body content.
+- Makes staged document access observable when metadata-first triage matters.
 - Switches into the correct working state.
 - Clarifies missing requirements in one batch when the task is unclear.
 - Decides whether the task needs a template-routing skill.
@@ -44,12 +45,16 @@ For non-trivial tasks, read only the minimum relevant files in this order when a
 3. the current `spec/**` work area if the task is still in flight, under clarification, or under design
 4. `docs/apps/<app>/00_readme.md` if an app is involved
 5. `docs/apps/<app>/dictionary/*.md` if contracts/schema are involved
-6. `docs/apps/<app>/ops/**` first, then `docs/platform/ops/**`, if deployment or routing is involved
+6. `docs/platform/<component>/specs/api_schema.md`, `data_schema.md`, or `ui_schema.md` if a platform-owned contract is involved
+7. `docs/apps/<app>/ops/**` first, then `docs/platform/ops/**`, if deployment or routing is involved
 
 For managed markdown in `docs/**` or `spec/**`:
 - read YAML front matter first
 - use `kind`, `scope`, `lifecycle`, `authority`, and `summary` to decide if the file is in scope
 - then read only the body sections allowed by the document access rules
+- if several managed docs are candidates or a target doc is large, make the staged access path visible through a metadata scan, bounded window read, or stable-anchor read before expanding
+- do not describe the workflow as progressive loading unless the actual reads followed that sequence
+- if a full-file read is needed, state the reason instead of implying the load stayed bounded
 
 If files are unavailable, enter degraded mode instead of guessing.
 
@@ -115,66 +120,28 @@ Capture these items as a compact implementation entry checklist:
 Use these bridging rules:
 - If behavior, API, or data contracts change, update the relevant authority spec before or together with code changes:
   - app-owned contract changes -> `docs/apps/<app>/dictionary/**`
-  - platform-owned shared contract changes -> `docs/platform/<component>/specs/**`
+  - platform-owned API contract changes -> `docs/platform/<component>/specs/api_schema.md`
+  - platform-owned data contract changes -> `docs/platform/<component>/specs/data_schema.md`
+  - platform-owned UI, route, state, or event contract changes -> `docs/platform/<component>/specs/ui_schema.md`
 - If the change creates reusable cross-app guidance, route it into `platform/standards/**` instead of hiding it inside a feature doc.
 - Treat acceptance criteria as the source for verification, not as decorative prose.
 - If implementation reveals a spec gap, patch the spec before claiming completion.
 
-### 11. Park ideas that are not ready to implement
-If the user says "not now", "later", or shares a rough idea without wanting execution yet:
-- add a concise item to `docs/dev_status/todo.md` for simple future work
-- create a draft design or standards note for larger ideas, then link it from todo
-- keep the note small, explicit, and track-tagged
+### 11. Load boundary-action guidance only when needed
+For lower-frequency boundary actions, use `references/handoff_and_delivery.md` instead of keeping the full procedure in active context.
 
-### 12. Delivery format
-For DESIGN / IMPLEMENTING / VERIFYING outputs, use this structure:
-1. Current Working State
-2. Summary
-3. Spec workspace changes
-4. Docs changes
-5. Code changes
-6. Verification
-7. Risks and rollback
+Load it when the task needs any of these:
+- parking ideas that are not ready to implement
+- structured DESIGN / IMPLEMENTING / VERIFYING delivery
+- pause handoff or confirmed completion handling
+- git and `docs/dev_status/**` checkpoint sync
 
-Use explicit `VERIFIED`, `BROKEN`, or `UNVERIFIED` labels.
-
-**Short example:**
-- Current Working State: `VERIFYING`
-- Verification:
-  - smoke test: `VERIFIED`
-  - production parity check: `UNVERIFIED`
-
-### 13. Completion and pause handling
-If pausing mid-task:
-- update only the relevant track block in `active_task.md`
-- do not overwrite unrelated tracks
-- preserve objective, current focus, and next actions
-- point to the active `spec/**` work area and relevant published docs instead of copying large draft content into `active_task.md`
-- if you are preserving a stable handoff checkpoint with git, sync the relevant dev-status update before or together with that commit
-- if dev status is updated without a commit, state why the work is still WIP or why no clean commit boundary exists yet
-
-If the task is completed and confirmed:
-- add a concise top-entry summary to `history_log.md`
-- reset or update the active state for that track
-- keep each history entry single-track
-- if the result should be preserved as a completion or stage-complete commit, make sure the dev-status updates land before or together with that commit
-- publish stable outputs from `spec/**` into `docs/**` and archive, summarize, or retire remaining stage-only drafts
-## Practical heuristics
-- Prefer the minimum doc surface needed for the task.
-- Keep process visible, but keep output lean.
-- Treat DocOps as a workflow harness, not a reason to over-document.
-- If the task is a tiny one-section update, skip heavy workflow and do the minimal compliant edit.
-- If the user's main need is template choice, structural routing, or checklist-based drafting, hand off to `doc-template-router` early instead of duplicating its job.
-
-## Example trigger scenarios
-- "帮我梳理这个仓库的 docs 结构，然后给我一个落地改造方案。"
-- "把这个功能的文档、dev_status、history 一起理顺。"
-- "这个排障过程需要补到 docs 里，你按规范带我走完整流程。"
-- "我不确定这块应该写到 platform 还是 app 文档，你来判断并落地。"
-- "这个需求已经有 spec 了，我现在要开始改代码，你先帮我做实现前桥接和验证计划。"
+For lower-frequency heuristics and trigger examples, load `references/usage_patterns.md` only when the task needs that extra guidance.
 
 ## Companion files
 - Use `references/bootstrap_and_states.md` for the compact state/bootstrap cheat sheet if you need a quick refresher.
 - Use `references/active_workspace_model.md` when you need the preferred `spec/**` vs `docs/**` split.
 - Use `references/document_metadata_and_access.md` when you need the front matter standard or kind-specific read/write rules.
 - Use `references/implementation_bridge.md` when the task is moving from requirement/spec into code and verification.
+- Use `references/handoff_and_delivery.md` for low-frequency boundary actions such as parking ideas, structured delivery, pause/completion handling, and checkpoint sync.
+- Use `references/usage_patterns.md` for lower-frequency heuristics and concrete trigger examples.

@@ -6,7 +6,8 @@
 3. the current `spec/**` work area when the task is still under clarification, design, or active implementation
 4. `docs/apps/<app>/00_readme.md` when an app is involved
 5. `docs/apps/<app>/dictionary/*.md` when contracts or schema matter
-6. `docs/apps/<app>/ops/**` first, then `docs/platform/ops/**`, when deployment/ops/routing matter
+6. `docs/platform/<component>/specs/api_schema.md`, `data_schema.md`, or `ui_schema.md` when a platform-owned contract matters
+7. `docs/apps/<app>/ops/**` first, then `docs/platform/ops/**`, when deployment/ops/routing matter
 
 If any critical file is unavailable, switch to degraded mode and say exactly what is missing.
 

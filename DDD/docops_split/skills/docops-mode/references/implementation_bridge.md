@@ -24,7 +24,9 @@ Primary spec docs may live in `spec/**` while the work is still evolving, but au
 ### If the change is contract-level
 - Update the authority spec first or atomically with code.
 - Use `docs/apps/<app>/dictionary/**` for app-owned contracts.
-- Use `docs/platform/<component>/specs/**` for platform-owned shared contracts.
+- Use `docs/platform/<component>/specs/api_schema.md` for platform-owned API contracts.
+- Use `docs/platform/<component>/specs/data_schema.md` for platform-owned data contracts.
+- Use `docs/platform/<component>/specs/ui_schema.md` for platform-owned UI, route, state, or event contracts.
 - Feature docs should reference the changed contract, not restate it.
 
 ### If the change is reusable across apps

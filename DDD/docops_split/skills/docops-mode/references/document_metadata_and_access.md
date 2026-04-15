@@ -38,6 +38,21 @@ For managed docs, use this default read order:
 3. Read only the body sections allowed by the kind-specific rules below
 4. Expand to more sections only when the current task truly requires it
 
+Optional helper for larger doc trees:
+- Use `skills/docops-mode/scripts/metadata_index.py` when you need a bounded batch scan of front matter before deciding which files to open deeply.
+- Treat the helper as a triage accelerator, not as a replacement for reading the relevant target body sections before editing.
+
+### Progressive loading must be operational
+- Prompt wording alone does not prove that staged loading happened.
+- Only describe the read path as metadata-first or progressive when the actual access sequence followed it.
+- Preferred observable access modes:
+  1. bounded metadata scan via `skills/docops-mode/scripts/metadata_index.py`
+  2. bounded head/window read for log-like or status docs
+  3. stable-anchor or target-section read for contract and structured docs
+  4. full-file read only with an explicit reason
+- If tooling forces a broader read than desired, state the limitation instead of claiming bounded access.
+- For repo-wide or doc-heavy tasks, record a short `Doc Access Notes` summary in the delivery so reviewers can verify the access pattern.
+
 If front matter is missing:
 - note the metadata debt
 - infer the likely `kind` and `scope` from path and headings

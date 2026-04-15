@@ -25,11 +25,14 @@ Why:
 - `references/active_workspace_model.md`
 - `references/document_metadata_and_access.md`
 - `references/implementation_bridge.md`
+- `references/handoff_and_delivery.md`
+- `references/usage_patterns.md`
 
 ### `doc-template-router`
 - `references/routing_table.md`
 - `references/checklists.md`
 - `references/template_notes.md`
+- `references/usage_patterns.md`
 - `references/structural_templates_platform.md`
 - `references/structural_templates_app_core.md`
 - `references/structural_templates_app_contracts.md`
@@ -58,12 +61,17 @@ For managed markdown under `docs/**` and `spec/**`:
 - read front matter first
 - use `kind` to decide how much body content to read
 - use kind-specific write rules instead of broad rewrites
+- for larger doc trees, optionally use the bundled helper `skills/docops-mode/scripts/metadata_index.py` to batch-read bounded front matter before opening bodies
+- do not treat prompt wording alone as proof that staged loading happened; verify the actual access path
 
 High-value examples:
 - `dev_status_history`: newest first, prepend updates, usually read only the first 40-80 body lines
 - `dev_status_todo`: newest first, prepend updates, usually read only the first 30-60 body lines
 - `dev_status_active_task`: read and patch only the current track block
 - `dictionary_*`: read and patch by stable anchor instead of scanning the full file
+
+Example:
+- `python skills/docops-mode/scripts/metadata_index.py docs --recursive --max-files 200`
 
 ## 6. First prompts to test after migration
 Start with these from `test_prompts.md`:
@@ -77,18 +85,21 @@ Expected behavior:
 - recognizes multi-step workflow
 - clarifies scope if needed
 - makes spec/docs/code/verification bridge visible
+- makes metadata-first access observable when the task depends on staged reads
 - mentions dev status or closure handling when relevant
 
 ### Test `doc-template-router`
 1. Choose template family first
 2. Standards routing
-3. Micro-edit vs structural-edit
+3. Platform contract routing
+4. Micro-edit vs structural-edit
 
 Expected behavior:
 - chooses one route cleanly
-- distinguishes standards vs ADR vs dictionary vs feature
+- distinguishes standards vs ADR vs dictionary vs platform contract vs feature
 - uses checklist for micro-edits
 - uses fuller structural template skeleton only when needed
+- does not merely claim partial reads; the access path should be visible from commands or an explicit `Doc Access Notes` summary
 
 ## 7. What not to test first
 Avoid starting with tiny one-step prompts like:
@@ -106,6 +117,7 @@ The migration is in good shape when:
 - `spec/**` is used for evolving stage work instead of turning `docs/**` into a mixed active/archive workspace
 - managed docs can be triaged from YAML front matter before deep reads
 - history/todo/status docs can be updated with local reads instead of whole-file scans
+- metadata-first or progressive-loading claims are backed by observable staged reads or explicit full-read exceptions
 - standards no longer get confused with ADR or dictionary docs
 - acceptance criteria influence verification instead of staying as prose only
 
@@ -114,6 +126,7 @@ After moving the files, run the manual prompts in `test_prompts.md` and note:
 - which skill triggers
 - whether any prompt under-triggers or over-triggers
 - whether the chosen route feels natural
+- whether the observed read path was truly staged or only described abstractly
 
 Then do one final round of description tuning only if the trigger behavior feels off.
 
